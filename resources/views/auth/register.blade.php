@@ -33,27 +33,44 @@
             class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('registerAuth') }}">
                 @csrf
             <!-- Email input -->
             <div class="form-outline mb-4">
                 <input type="text" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Nama" name="nama" />
-                <label class="form-label" for="form3Example3">Nama</label>
+                placeholder="Email" name="email" />
+            </div>
+
+            <!-- Nama input -->
+            <div class="form-outline mb-3">
+                <input type="text" id="form3Example4" class="form-control form-control-lg"
+                placeholder="Nama" name="nama"/>
+            </div>
+             <!-- NomorTelpon input -->
+             <div class="form-outline mb-4">
+                <input type="number" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Nomor Telpon" name="noTelp" />
+            </div>
+            <!-- jenis kelamin -->
+            <div class="form-outline mb-4">
+                <select class="form-select form-select-xl" aria-label=".form-select-sm example" name="jenis_kelamin">
+                    <option selected hidden>Jenis Kelamin</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                  </select>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-3">
                 <input type="password" id="form3Example4" class="form-control form-control-lg"
                 placeholder="Password" name="password"/>
-                <label class="form-label" for="form3Example4">Password</label>
             </div>
 
 
             <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" class="btn btn-primary">Masuk</button>
-                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{route('register')}}"
-                    class="link-danger">Register</a></p>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <p class="small fw-bold mt-2 pt-1 mb-0"><a href="#!"
+                    class="link-danger">Login</a></p>
             </div>
 
             </form>
