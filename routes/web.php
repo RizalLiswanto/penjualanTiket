@@ -27,22 +27,36 @@ Route::middleware(['guest'])->group(function(){
     Route::post('registerAuth',[LoginController::class,'registerAuth'])->name('registerAuth');
 
 });
-Route::get('logout',[LoginController::class,'logout'])->name('logout');
+
 
 Route::middleware(['auth'])->group(function(){
-
-    Route::get('/profil',[ProfilController::class,'index'])->name('index');
-
-    Route::controller(RoleController::class)->group(function(){
-        route::get('role','index')->name('index');
-        route::get('roleCreate','create')->name('createRole');
-        route::post('createAction','createAction')->name('createAction');
-        route::get('edit/{id}','edit')->name('edit');
-        route::post('editAction/{id}','editAction')->name('editAction');
-        route::post('delete/{id}','delete')->name('delete');
-
-    });
+ 
     
-    
+   
+        
+        Route::middleware(['auth','role:admin'])->group(function(){
+ 
+            Route::controller(RoleController::class)->group(function(){
+                route::get('role','index')->name('index');
+                route::get('roleCreate','create')->name('createRole');
+                route::post('createAction','createAction')->name('createAction');
+                route::get('edit/{id}','edit')->name('edit');
+                route::post('editAction/{id}','editAction')->name('editAction');
+                route::post('delete/{id}','delete')->name('delete');
+      
+            });
+        
+        });
+        Route::middleware(['auth','role:user'])->group(function(){
+ 
+              
+                Route::get('/profil',[ProfilController::class,'index'])->name('index');
+        
+            
+        
+        });
+        Route::get('logout',[LoginController::class,'logout'])->name('logout');
+        
 
 });
+
