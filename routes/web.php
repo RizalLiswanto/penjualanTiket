@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilmController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RoleController;
@@ -48,12 +49,8 @@ Route::middleware(['auth'])->group(function(){
         
         });
         Route::middleware(['auth','role:user'])->group(function(){
- 
-              
-                Route::get('/profil',[ProfilController::class,'index'])->name('index');
-        
-            
-        
+            Route::get('/profil',[ProfilController::class,'index'])->name('index');
+            Route::get('/film',[FilmController::class,'index'])->name('film'); 
         });
         Route::get('logout',[LoginController::class,'logout'])->name('logout');
         

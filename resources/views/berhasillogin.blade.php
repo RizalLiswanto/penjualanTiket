@@ -48,6 +48,7 @@
         <p>Email: {{ Auth::user()->email }}</p>
         <p>NO Telpon: {{ Auth::user()->noTelp }}</p>
         <p>Role: {{Auth::user()->role->name }}</p>
+       <a href="{{route('film')}}">Lihat film yang tayang</a>
     </div>
 </body>
 </html>
